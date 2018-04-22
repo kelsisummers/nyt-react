@@ -5,22 +5,24 @@ export default {
   getArticles: function() {
     return axios.get("/api/articles");
   },
-  // Gets the article with the given id
-  // getArticle: function(id) {
-  //   return axios.get("/api/articles/" + id);
-  // },
-  // getSaved: function() {
-  //   return axios.get("/api/articles/saved");
-  // },
+
   // Deletes the article with the given id
   deleteArticle: function(id) {
     return axios.delete("/api/articles/" + id);
   },
-  searchArticles: function(query) {
-    return axios.get("/api/search", { params: { q: query } });
-  },
+
   // Saves a article to the database
   saveArticle: function(articleData) {
     return axios.post("/api/articles", articleData);
+  },
+
+  searchArticles: function(query) {
+    const q = query.q.toLowerCase();
+    const begin_date = query.begin_date.replace(/[\/-]/g, '');
+    const end_date = query.end_date.replace(/[\/-]/g, '');
+
+    const apiUrl = `https://api.nytimes.com/svc/search/v2/articlesearch.json?apikey=7aeacb6adb8f48308c7ee83c07ecabb3&sort=newest&fl=web_url,snippet,headline,pub_date&q=${q}&begin_date=${begin_date}&end_date=${end_date}`;
+    return axios
+    .get(apiUrl)
   }
 };
