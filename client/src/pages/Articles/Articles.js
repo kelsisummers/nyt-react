@@ -19,6 +19,28 @@ class Articles extends Component {
     articles: []
   };
 
+  // onChange = e => {
+  //   const { name, value } = e.target;
+  //   this.setState({
+  //     query: {
+  //       ...this.state.query,
+  //       [name]: value
+  //     }
+  //   })
+  // }
+
+  // formatForApi = obj => {
+  //   return Object.entries(obj).map(item => {
+  //     return { [item[0]]: item[1] };
+  //   })
+  // }
+
+  // submit = e => {
+  //   e.preventDefault();
+  //   const ajaxObj = this.formatForApi(this.state.query);
+  //   ApiCall(ajaxObj);
+  // }
+
   componentDidMount() {
     this.loadArticles();
   }
@@ -76,27 +98,26 @@ class Articles extends Component {
   }
 
   render() {
-    // const { searches } = this.props;
-    console.log("What is our state", this.state);
+    console.log("What is our state", this.state.searches);
     return (
       <Container fluid>
         <Row>
-          <Col size="md-6 sm-12">
+          <Col size="md-4 sm-12">
             <Jumbotron>
-              <h1>What Articles Should I Read?</h1>
+              <h1>New York Times Search</h1>
             </Jumbotron>
-            <form>
+            <form style={{ textAlign: "left", margin: 10 }}>
               <Input
                 onChange={this.onChange}
                 name="q"
                 placeholder="Topic (required)"
               />
-              <p>Start Date:</p>
+              <p>Start Date: (required)</p>
               <Date
                 onChange={this.onChange}
                 name="begin_date"
               />
-              <p>End Date:</p>
+              <p>End Date: (required)</p>
               <Date
                 onChange={this.onChange}
                 name="end_date" 
@@ -110,7 +131,7 @@ class Articles extends Component {
               </FormBtn>
             </form>
           </Col>
-          <Col size="md-6 sm-12">
+          <Col size="md-8 sm-12">
             <Jumbotron>
               <h1>Search Results</h1>
             </Jumbotron>
@@ -132,11 +153,11 @@ class Articles extends Component {
                 ))}
               </List>
             ) : (
-              <h3>No Results to Display</h3>
+              <h3 style={{textAlign: "center" }}>No Results to Display</h3>
             )}
           </Col>
         </Row>
-        <Row>
+        <Row >
           <Col size="md-12 sm-12">
             <Jumbotron>
               <h1>Articles On My List</h1>

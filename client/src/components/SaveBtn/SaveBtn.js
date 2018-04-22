@@ -5,7 +5,7 @@ import "./SaveBtn.css";
 // That way we don't have to define them all individually
 const SaveBtn = props => (
   <span className="save-btn" {...props}>
-    <strong>+</strong>
+    <strong>Add to List +</strong>
   </span>
 );
 

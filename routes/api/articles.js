@@ -7,7 +7,6 @@ router.route("/")
   .get(articlesController.findAll)
   .post(articlesController.create);
 
-
 // Matches with "/api/articles/:id"
 router
   .route("/:id")
@@ -16,3 +15,4 @@ router
   .delete(articlesController.remove);
 
 module.exports = router;
+
