@@ -14,6 +14,9 @@ Tech Stack:
   - MongoDB
   
   Dependencies:
+  <ul>
+  <li>axios</li>
+  </ul>
     - axios
     - body-parser
     - dotenv
