@@ -15,10 +15,9 @@ Tech Stack:
   
   Dependencies:
   <ul>
-  <li>axios</li>
+    <li>axios</li>
+    <li>body-parser</li>
+    <li>dotenv</li>
+    <li>express</li>
+    <li>mongoose</li>
   </ul>
-    - axios
-    - body-parser
-    - dotenv
-    - express
-    - mongoose
