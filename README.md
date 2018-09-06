@@ -1,4 +1,4 @@
-# New York Times Reading List App
+# NYT-ReadingList-App
 
 <strong>Hosted App Link: https://polar-taiga-73496.herokuapp.com/</strong>
 
