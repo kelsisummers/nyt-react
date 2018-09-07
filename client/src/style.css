@@ -23,7 +23,6 @@ h1.header{
 .page-wrapper {
   display: grid;
   grid-template-areas: 'nav' 'hero' 'search';
-  /* grid-template-columns: repeat(2, auto); */
   grid-template-rows: repeat(3, auto);
 }
 
@@ -102,10 +101,10 @@ h3.no-results{
   border-bottom: 1px solid black;
   padding: 5px 10px;
   border-radius: 8px;
+  margin-bottom: 20px;
 }
 
 .save-btn:hover {
-  /* background: #417B5A; */
   border-bottom: 1px solid #417B5A;
   color: #417B5A;
 }
@@ -122,4 +121,11 @@ h3.no-results{
 
 .description{
   max-width: 800px;
+}
+
+.first-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }

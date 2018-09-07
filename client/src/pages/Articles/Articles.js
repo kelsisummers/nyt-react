@@ -99,7 +99,7 @@ class Articles extends Component {
   }
 
   render() {
-    console.log("What is our state", this.state.articles);
+    // console.log("What is our state", this.state.articles);
     return (
       <Container fluid>
         <Row>
@@ -141,12 +141,14 @@ class Articles extends Component {
             <List>
                 {this.state.searches.map((search, i) => (
                   <ListItem key={i}>
-                  <SaveBtn onClick={() => this.saveArticle(i)}/>
+                  <div className="first-row">
                     <a href={search.web_url}>
                       <h5 className="article-title">
                         {search.headline.main}
                       </h5>
                     </a>
+                    <SaveBtn onClick={() => this.saveArticle(i)}/>
+                  </div>
                     <p>
                       <Moment 
                       format="MM/DD/YYYY HH:mm A"
