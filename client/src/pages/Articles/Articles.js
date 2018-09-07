@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import Moment from 'react-moment';
+
 import DeleteBtn from "../../components/DeleteBtn";
 import SaveBtn from "../../components/SaveBtn";
-import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
@@ -98,32 +99,35 @@ class Articles extends Component {
   }
 
   render() {
-    console.log("What is our state", this.state.searches);
+    console.log("What is our state", this.state.articles);
     return (
       <Container fluid>
         <Row>
-          <Col size="md-4 sm-12">
-            <Jumbotron>
-              <h1>New York Times Search</h1>
-            </Jumbotron>
-            <form style={{ textAlign: "left", margin: 10 }}>
+          <Col size="md-5 sm-12">
+            <h1 className='header'>Search New York Times</h1>
+            <form className='search-form'>
+              <div className="date-input">
+              <div className='start-input'>
+                <p>Start Date: (required)</p>
+                <Date
+                  onChange={this.onChange}
+                  name="begin_date"
+                />
+                </div>
+                <div className='end-input'>
+                  <p>End Date: (required)</p>
+                  <Date
+                    onChange={this.onChange}
+                    name="end_date" 
+                  />
+                </div>
+              </div>
               <Input
                 onChange={this.onChange}
                 name="q"
                 placeholder="Topic (required)"
+                className='topic-input'
               />
-              <p>Start Date: (required)</p>
-              <Date
-                onChange={this.onChange}
-                name="begin_date"
-              />
-              <p>End Date: (required)</p>
-              <Date
-                onChange={this.onChange}
-                name="end_date" 
-              />
-
-        
               <FormBtn
                 onClick={this.handleClick}
               >
@@ -131,55 +135,58 @@ class Articles extends Component {
               </FormBtn>
             </form>
           </Col>
-          <Col size="md-8 sm-12">
-            <Jumbotron>
-              <h1>Search Results</h1>
-            </Jumbotron>
+          <Col size="md-7 sm-12">
+            <h1 className='header'>Search Results</h1>
             {this.state.searches.length > 0  ? (
             <List>
                 {this.state.searches.map((search, i) => (
                   <ListItem key={i}>
                   <SaveBtn onClick={() => this.saveArticle(i)}/>
                     <a href={search.web_url}>
-                      <h4>
+                      <h5 className="article-title">
                         {search.headline.main}
-                      </h4>
+                      </h5>
                     </a>
-                    
-                      <p>{search.pub_date}</p>
-                      <p>{search.snippet}</p>
+                    <p>
+                      <Moment 
+                      format="MM/DD/YYYY HH:mm A"
+                      date={search.pub_date} />
+                    </p>
+                    <p>{search.snippet}</p>
                     
                   </ListItem>
                 ))}
               </List>
             ) : (
-              <h3 style={{textAlign: "center" }}>No Results to Display</h3>
+              <h3 className='no-results'>No Results to Display</h3>
             )}
           </Col>
         </Row>
-        <Row >
-          <Col size="md-12 sm-12">
-            <Jumbotron>
-              <h1>Articles On My List</h1>
-            </Jumbotron>
+        <Row>
+          <Col size="md-8 sm-12" id='results-container'>
+            <h1 className="header">Saved Articles</h1>
             {this.state.articles.length > 0  ? (
               <List>
                 {this.state.articles.map((article) => (
                   <ListItem key={article._id}>
                   <DeleteBtn onClick={() => this.deleteArticle(article._id)} />
                     <a href={article.web_url}>
-                      <h4>
+                      <h5 className="article-title">
                         {article.headline_main}
-                      </h4>
+                      </h5>
                     </a>
-                      <p>{article.pub_date}</p>
-                      <p>{article.snippet}</p>
+                    <p>
+                      <Moment 
+                      format="MM/DD/YYYY"
+                      date={article.pub_date} />
+                    </p>
+                    <p className="description">{article.snippet}</p>
                     
                   </ListItem>
                 ))}
               </List>
             ) : (
-              <h3 style={{textAlign: "center" }}>No Results to Display</h3>
+              <h3>No Results to Display</h3>
             )}
           </Col>
         </Row>
