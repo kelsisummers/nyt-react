@@ -18,10 +18,10 @@ export default {
 
   searchArticles: function(query) {
     const q = query.q.toLowerCase();
-    const begin_date = query.begin_date.replace(/[\/-]/g, '');
-    const end_date = query.end_date.replace(/[\/-]/g, '');
+    const begin_date = query.begin_date.replace(/[-]/g, '');
+    const end_date = query.end_date.replace(/[-]/g, '');
 
-    const apiUrl = `https://api.nytimes.com/svc/search/v2/articlesearch.json?apikey=7aeacb6adb8f48308c7ee83c07ecabb3&sort=newest&fl=web_url,snippet,headline,pub_date&q=${q}&begin_date=${begin_date}&end_date=${end_date}`;
+    const apiUrl = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=pDi6qkATQVvNGTumqXsVNOL0VJOSkL1t&sort=newest&fl=web_url,snippet,headline,pub_date&q=${q}&begin_date=${begin_date}&end_date=${end_date}`;
     return axios
     .get(apiUrl)
   }
